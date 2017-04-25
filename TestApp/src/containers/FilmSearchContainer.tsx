@@ -4,7 +4,7 @@ import { connect, Dispatch } from 'react-redux'
 import { YearDropdown } from "../components/YearDropdown";
 import { SearchBox } from "../components/SearchBox";
 import { FilmList } from "../components/FilmList";
-import { RootState } from "../reducers/RootReducer";
+import { FilmSearchState } from "../reducers/FilmSearchReducer";
 
 interface IFilmSearchContainerProps {
     selectedYear: string,
@@ -15,12 +15,12 @@ interface IFilmSearchContainerProps {
     typeInSearchBox: (searchTerm: string) => void
 }
 
-let mapStateToProps = (state: RootState) => {
+let mapStateToProps = (state: { FilmSearchReducer: FilmSearchState }) => {
     return {
-        selectedYear: state.selectedYear,
-        searchTerm: state.searchTerm,
-        films: state.films,
-        isLoading: state.isLoading
+        selectedYear: state.FilmSearchReducer.selectedYear,
+        searchTerm: state.FilmSearchReducer.searchTerm,
+        films: state.FilmSearchReducer.films,
+        isLoading: state.FilmSearchReducer.isLoading
     }
 }
 
@@ -70,4 +70,7 @@ class FilmSearchContainer extends React.Component<IFilmSearchContainerProps, {}>
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilmSearchContainer);
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(FilmSearchContainer);

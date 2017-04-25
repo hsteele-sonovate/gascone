@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import "rxjs";
 
-import { RootEpic } from "./actions/RootEpic";
+import { RootEpic } from "./epics/RootEpic"; 
 import { RootReducer } from "./reducers/RootReducer";
 import { Body } from "./Body";
 
