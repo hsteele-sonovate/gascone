@@ -1,3 +1,12 @@
 # Gascone
 
-_Welcome friends, theres goona need to be some contribution and help with this stuff and a nice exchange of ideas, til we gets it right._
+Ohayo!
+
+### To Play
+```
+cd <AppName>
+npm install
+npm run build 
+// or 
+npm run watch
+```
