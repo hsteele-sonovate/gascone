@@ -1,3 +1,8 @@
 import * as React from "react";
+import FilmSearchContainer from "./containers/FilmSearchContainer";
 
-export const Body = () => <h1>Who you</h1>;
+export const Body = () => 
+    <div className="app">
+        <FilmSearchContainer/>
+    </div>
+;

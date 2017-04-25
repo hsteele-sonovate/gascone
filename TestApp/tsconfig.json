@@ -2,10 +2,13 @@
     "compilerOptions": {
         "outDir": "./build/",
         "sourceMap": true,
-        "noImplicitAny": true,
+        // hmm implicit any?
+        "noImplicitAny": false,
         "module": "commonjs",
         "target": "es5",
-        "jsx": "react"
+        "jsx": "react",
+        "transpileOnly": true,
+        "lib": ["es2017", "dom"]
     },
     "include": [
         "./src/**/*"
