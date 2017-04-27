@@ -1,11 +1,11 @@
 import { FilmSearchActions } from "./Actions";
 
-export interface SelectYearAction {
+export interface ISelectYearAction {
     type: FilmSearchActions;
     payload: string;
 }
 
-export const SelectYearAction = (year:string):SelectYearAction => {
+export const SelectYearAction = (year:string):ISelectYearAction => {
     return {
         type: 'SELECT_YEAR',
         payload: year

@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as R from "ramda";
 
-export interface SearchBoxProps {
+export interface ISearchBoxProps {
     searchTerm: string,
     onChange: (event: string) => void
 }
 
-export const SearchBox = (props: SearchBoxProps) => {
+export const SearchBox = (props: ISearchBoxProps) => {
     return (
         <div className="form-group">
             <label>Film Name:</label>

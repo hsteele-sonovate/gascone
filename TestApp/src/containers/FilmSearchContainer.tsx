@@ -29,12 +29,8 @@ let mapStateToProps = (state: { FilmSearchReducer: FilmSearchState }) => {
 
 let mapDispatchToProps = (dispatch: Function) => {
     return {
-        selectYear: (year: string): void => dispatch(
-            SelectYearAction(year)
-        ),
-        typeInSearchBox: (searchTerm: string): void => dispatch(
-            TypeInSearchBoxAction(searchTerm)
-        )
+        selectYear: (year: string): void => dispatch(SelectYearAction(year)),
+        typeInSearchBox: (searchTerm: string): void => dispatch(TypeInSearchBoxAction(searchTerm))
     };
 }
 

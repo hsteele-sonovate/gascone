@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { FilmListingItem } from "./FilmListingItem";
 
-export interface FilmListProps { films: Object[]; isLoading: boolean }
+export interface IFilmListProps { films: Object[]; isLoading: boolean }
 
-export const FilmList = (props: FilmListProps) => 
+export const FilmList = (props: IFilmListProps) => 
     <div className="panel panel-default">
         <div className="panel-body">
             {props.films.map((film) => (

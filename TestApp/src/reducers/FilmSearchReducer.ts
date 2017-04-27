@@ -11,8 +11,25 @@ export class FilmSearchState {
     films: Object[] = [];
     isLoading: boolean = false;
 }
+
+export interface IFilmSearchReducerAction {
+    type: FilmSearchActions,
+    payload: string,
+    films: IFilm[]
+}
+
+export interface IFilm {
+    Poster: string, 
+    Title: string,
+    Type: string,
+    Year: string,
+    imdbID: string
+}
  
-export const FilmSearchReducer = (state: FilmSearchState = new FilmSearchState(), action: any) => {
+export const FilmSearchReducer = (
+    state: FilmSearchState = new FilmSearchState(), 
+    action: IFilmSearchReducerAction
+) => {
     switch (action.type) {
         case 'SELECT_YEAR': 
             return FilmSearchStateOnSelectYear(state, action);

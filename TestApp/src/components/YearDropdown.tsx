@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as R from "ramda";
 
-export interface YearDropdownProps {
+export interface IYearDropdownProps {
     selected: string,
     onChange: (event: string) => void
 }
@@ -9,7 +9,7 @@ export interface YearDropdownProps {
 const from = 1900;
 const to = 2017;
 
-export const YearDropdown = (props: YearDropdownProps) => {
+export const YearDropdown = (props: IYearDropdownProps) => {
     return (
         <div className="form-group">
             <label>Year:</label>

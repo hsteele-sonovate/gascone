@@ -1,8 +1,8 @@
 import * as React from "react";
 
-export interface FilmListingItemProps { film: Object; }
+export interface IFilmListingItemProps { film: Object; }
 
-export const FilmListingItem = (props: FilmListingItemProps) => 
+export const FilmListingItem = (props: IFilmListingItemProps) => 
     <div className="media">
         <div className="media-left">
             <img style={{width: "100px"}} src={ props.film['Poster'] } />
