@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as R from "ramda";
+import "../../../styles/dropdown.less";
 
 export interface IYearDropdownProps {
     selected: string,
@@ -11,17 +12,17 @@ const to = 2017;
 
 export const YearDropdown = (props: IYearDropdownProps) => {
     return (
-        <div className="year-dropdown">
-            <label>Year:</label>
+        <div className="dropdown">
             <select
-                className="year-dropdown__control"
+                className="dropdown__control"
                 value={props.selected}
                 onChange={(e) => {props.onChange(e.currentTarget.value)}}
             >
-                <option value="">Any</option>
+                <option value="">Any Year</option>
                 {
                     R.range(from, to + 1)
                     .map((year) => year.toString())
+                    .reverse()
                     .map((year) => {
                         return (
                             <option

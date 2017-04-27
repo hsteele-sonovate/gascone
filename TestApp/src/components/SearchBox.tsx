@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as R from "ramda";
+import "../../../styles/search-box.less";
 
 export interface ISearchBoxProps {
     searchTerm: string,
@@ -9,8 +10,8 @@ export interface ISearchBoxProps {
 export const SearchBox = (props: ISearchBoxProps) => {
     return (
         <div className="search-box">
-            <label>Film Name:</label>
             <input
+                placeholder="Film Name"
                 className="search-box__input"
                 type="text"
                 value={props.searchTerm}

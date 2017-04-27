@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect, Dispatch } from 'react-redux'
+import "../styles/v-film-search.less";
 
 import { YearDropdown } from "../components/YearDropdown";
 import { SearchBox } from "../components/SearchBox";
@@ -7,6 +8,7 @@ import { FilmList } from "../components/FilmList";
 import { FilmSearchState } from "../reducers/FilmSearchReducer";
 import { SelectYearAction } from "../actions/SelectYearAction";
 import { TypeInSearchBoxAction } from "../actions/TypeInSearchBoxAction";
+
 
 
 interface IFilmSearchContainerProps {
@@ -37,16 +39,16 @@ let mapDispatchToProps = (dispatch: Function) => {
 class FilmSearchContainer extends React.Component<IFilmSearchContainerProps, {}> {
     render() {
         return (
-            <div className="container">
-                <h1>Film Searcher</h1>
-                <div className="row">
-                    <div className="col-xs-6">
+            <div className="v-film-search">
+                <div className="v-film-search__controls">
+                    <h1 className="v-film-search__title">Film Searcher</h1>
+                    <div className="v-film-search__box">
                         <SearchBox
                             searchTerm={this.props.searchTerm}
                             onChange={this.props.typeInSearchBox}
                         />
                     </div>
-                    <div className="col-xs-6">
+                    <div className="v-film-search__year-dropdown">
                         <YearDropdown
                             selected={this.props.selectedYear}
                             onChange={this.props.selectYear}
@@ -54,13 +56,11 @@ class FilmSearchContainer extends React.Component<IFilmSearchContainerProps, {}>
                     </div>
                 </div>
                 
-                <div className="row">
-                    <div className="col-xs-12">
-                        <FilmList
-                            films={this.props.films}
-                            isLoading={this.props.isLoading}
-                        />
-                    </div>
+                <div className="v-film-search__body">
+                    <FilmList
+                        films={this.props.films}
+                        isLoading={this.props.isLoading}
+                    />
                 </div>
             </div>
         )

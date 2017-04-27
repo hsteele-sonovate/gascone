@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FilmListingItem } from "./FilmListingItem";
+import "../../../styles/film-list.less";
 
 export interface IFilmListProps { 
     films: Object[]; 
