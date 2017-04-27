@@ -1,12 +1,14 @@
 import * as React from "react";
-
 import { FilmListingItem } from "./FilmListingItem";
 
-export interface IFilmListProps { films: Object[]; isLoading: boolean }
+export interface IFilmListProps { 
+    films: Object[]; 
+    isLoading: boolean 
+}
 
 export const FilmList = (props: IFilmListProps) => 
-    <div className="panel panel-default">
-        <div className="panel-body">
+    <div className="film-list">
+        <div className="film-list__body">
             {props.films.map((film) => (
                 <FilmListingItem
                     key={film['imdbID']}
@@ -14,10 +16,14 @@ export const FilmList = (props: IFilmListProps) =>
                 />
             ))}
             { props.films.length === 0 && ! props.isLoading &&
-                <div style={{textAlign:"center"}}>No results</div>
+                <div 
+                    className="film-list__text" 
+                    style={{textAlign:"center"}}
+                >No results</div>
             }
             { props.isLoading &&
-                <div className="loader"></div>
+                <div className="film-list__loader"></div>
             }
         </div>
-    </div>;
+    </div>
+;

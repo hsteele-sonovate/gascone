@@ -8,10 +8,10 @@ export interface ISearchBoxProps {
 
 export const SearchBox = (props: ISearchBoxProps) => {
     return (
-        <div className="form-group">
+        <div className="search-box">
             <label>Film Name:</label>
             <input
-                className="form-control"
+                className="search-box__input"
                 type="text"
                 value={props.searchTerm}
                 onChange={(e) => {props.onChange(e.currentTarget.value)}}

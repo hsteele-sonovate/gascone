@@ -5,9 +5,9 @@ import { YearDropdown } from "../components/YearDropdown";
 import { SearchBox } from "../components/SearchBox";
 import { FilmList } from "../components/FilmList";
 import { FilmSearchState } from "../reducers/FilmSearchReducer";
-
 import { SelectYearAction } from "../actions/SelectYearAction";
 import { TypeInSearchBoxAction } from "../actions/TypeInSearchBoxAction";
+
 
 interface IFilmSearchContainerProps {
     selectedYear: string,

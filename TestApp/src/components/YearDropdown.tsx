@@ -11,10 +11,10 @@ const to = 2017;
 
 export const YearDropdown = (props: IYearDropdownProps) => {
     return (
-        <div className="form-group">
+        <div className="year-dropdown">
             <label>Year:</label>
             <select
-                className="form-control"
+                className="year-dropdown__control"
                 value={props.selected}
                 onChange={(e) => {props.onChange(e.currentTarget.value)}}
             >
