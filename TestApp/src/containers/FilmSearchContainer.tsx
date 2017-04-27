@@ -7,6 +7,7 @@ import { FilmList } from "../components/FilmList";
 import { FilmSearchState } from "../reducers/FilmSearchReducer";
 
 import { SelectYearAction } from "../actions/SelectYearAction";
+import { TypeInSearchBoxAction } from "../actions/TypeInSearchBoxAction";
 
 interface IFilmSearchContainerProps {
     selectedYear: string,
@@ -31,10 +32,9 @@ let mapDispatchToProps = (dispatch: Function) => {
         selectYear: (year: string): void => dispatch(
             SelectYearAction(year)
         ),
-        typeInSearchBox: (searchTerm: string): void => dispatch({
-            type: 'TYPE_IN_SEARCH_BOX',
-            payload: searchTerm
-        })
+        typeInSearchBox: (searchTerm: string): void => dispatch(
+            TypeInSearchBoxAction(searchTerm)
+        )
     };
 }
 

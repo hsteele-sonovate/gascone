@@ -1,13 +1,13 @@
-import { Actions } from "./Actions";
+import { FilmSearchActions } from "./Actions";
 
 export interface SelectYearAction {
-    type: Actions.SelectYear;
+    type: FilmSearchActions;
     payload: string;
 }
 
 export const SelectYearAction = (year:string):SelectYearAction => {
     return {
-        type: Actions.SelectYear,
+        type: 'SELECT_YEAR',
         payload: year
     };
 }

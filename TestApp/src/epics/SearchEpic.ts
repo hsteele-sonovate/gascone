@@ -13,7 +13,7 @@ export var SearchEpic: any = (action$: any, store: any): any => {
         })
         .debounceTime(250)
         .mergeMap((action) => 
-            fetch(`http://www.omdbapi.com/?s=${store.getState().searchTerm}&y=${store.getState().selectedYear}`)
+            fetch(`http://www.omdbapi.com/?s=${store.getState().FilmSearchReducer.searchTerm}&y=${store.getState().FilmSearchReducer.selectedYear}`)
         )
         .mergeMap((response) => response.json())
         .map((response) => {
@@ -32,6 +32,7 @@ export var SearchEpic: any = (action$: any, store: any): any => {
             });
         })
         .map((results) => {
+            console.log("i did it ma");
             return {
                 type: 'SEARCH_COMPLETED',
                 films: results
