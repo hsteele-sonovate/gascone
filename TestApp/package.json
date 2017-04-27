@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/immutable": "^3.8.7",
+    "@types/jest": "^19.2.2",
     "@types/ramda": "0.0.5",
     "@types/react": "^15.0.20",
     "@types/react-addons-update": "^0.14.16",
@@ -28,6 +29,7 @@
     "react-addons-test-utils": "^15.5.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.16.1",
+    "ts-jest": "^19.0.13",
     "typescript": "^2.2.2",
     "webpack": "^2.3.2"
   },
@@ -37,11 +39,17 @@
     "test": "jest"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
     },
-    "testMatch": ["**/__tests__/*.test.(ts|tsx|js)"]
+    "testMatch": [
+      "**/__tests__/**/*.test.(ts|tsx|js)"
+    ]
   },
   "author": "",
   "license": "ISC"
