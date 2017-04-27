@@ -22,8 +22,10 @@
     "@types/react-redux": "^4.4.38",
     "awesome-typescript-loader": "^3.1.2",
     "css-loader": "^0.28.0",
+    "jest": "^19.0.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
+    "react-addons-test-utils": "^15.5.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.16.1",
     "typescript": "^2.2.2",
@@ -31,7 +33,15 @@
   },
   "scripts": {
     "build": "webpack --progress --colors",
-    "watch": "webpack --progress --colors --watch"
+    "watch": "webpack --progress --colors --watch",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testMatch": ["**/__tests__/*.test.(ts|tsx|js)"]
   },
   "author": "",
   "license": "ISC"
