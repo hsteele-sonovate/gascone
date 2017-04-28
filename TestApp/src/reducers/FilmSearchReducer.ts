@@ -4,6 +4,7 @@ import { FilmSearchActions } from "../actions/Actions";
 import { FilmSearchStateOnSelectYear } from "../mutators/FilmSearchStateOnSelectYear";
 import { FilmSearchStateOnTypeInSearchBox } from "../mutators/FilmSearchStateOnTypeInSearchBox";
 import { FilmSearchStateOnSearchCompleted } from "../mutators/FilmSearchStateOnSearchCompleted";
+import { IFilm } from "../transformers/IFilmResultItem_IFilm";
 
 export class FilmSearchState {
     selectedYear: string = "";
@@ -16,14 +17,6 @@ export interface IFilmSearchReducerAction {
     type: FilmSearchActions,
     payload: string,
     films: IFilm[]
-}
-
-export interface IFilm {
-    Poster: string, 
-    Title: string,
-    Type: string,
-    Year: string,
-    imdbID: string
 }
  
 export const FilmSearchReducer = (

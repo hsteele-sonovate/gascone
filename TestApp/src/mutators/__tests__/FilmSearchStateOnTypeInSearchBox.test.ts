@@ -1,5 +1,5 @@
-import { FilmSearchStateOnTypeInSearchBox } from "../../src/mutators/FilmSearchStateOnTypeInSearchBox";
-import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
+import { FilmSearchStateOnTypeInSearchBox } from "../FilmSearchStateOnTypeInSearchBox";
+import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../reducers/FilmSearchReducer";
 
 it("mutates film search state on type in search box action correctly", () => {
     

@@ -1,5 +1,5 @@
-import { FilmSearchStateOnSearchCompleted } from "../../src/mutators/FilmSearchStateOnSearchCompleted";
-import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
+import { FilmSearchStateOnSearchCompleted } from "../FilmSearchStateOnSearchCompleted";
+import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../reducers/FilmSearchReducer";
 
 it("it mutates film search state on search complete correctly", () => {
     

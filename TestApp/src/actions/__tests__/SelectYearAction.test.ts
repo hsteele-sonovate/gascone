@@ -1,4 +1,4 @@
-import { SelectYearAction } from "../../src/actions/SelectYearAction";
+import { SelectYearAction } from "../SelectYearAction";
 
 it("Takes year and generates a year selected film search action", () => {
     let year = "10-02-2017";

@@ -1,4 +1,4 @@
-import { TypeInSearchBoxAction } from "../../src/actions/TypeInSearchBoxAction";
+import { TypeInSearchBoxAction } from "../TypeInSearchBoxAction";
 
 it("Takes film search query and makes a film search action", () => {
     let searchQuery = "What up boy";

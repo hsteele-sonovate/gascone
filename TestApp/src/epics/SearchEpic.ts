@@ -6,6 +6,9 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/mergeMap";
 
+import { IFilmResultItem, IFilm, FilmItem_IFilm } from "../transformers/IFilmResultItem_IFilm";
+import { SearchCompletedAction } from "../actions/SearchCompletedAction";
+
 export var SearchEpic: any = (action$: any, store: any): any => {
     return action$
         .filter((action) => action.type === 'SELECT_YEAR' || action.type === 'TYPE_IN_SEARCH_BOX')
@@ -21,18 +24,6 @@ export var SearchEpic: any = (action$: any, store: any): any => {
             return response;
         })
         .map((json) => json.Search)
-        .map(jsonItems => {
-            return jsonItems.map((jsonItem) => {
-                if (jsonItem['Poster'] === 'N/A') {
-                    return R.assoc('Poster', 'http://www.ckconsumables.com/Content/Images/no_image_placeholder.png', jsonItem);
-                }
-                return jsonItem;
-            });
-        })
-        .map((results) => {
-            return {
-                type: 'SEARCH_COMPLETED',
-                films: results
-            }
-        });
+        .map((filmItems: IFilmResultItem[]) => filmItems.map(FilmItem_IFilm))
+        .map((films: IFilm[]) => SearchCompletedAction(films));
 }

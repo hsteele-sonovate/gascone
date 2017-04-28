@@ -1,5 +1,5 @@
-import { FilmSearchStateOnSelectYear } from "../../src/mutators/FilmSearchStateOnSelectYear";
-import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
+import { FilmSearchStateOnSelectYear } from "../FilmSearchStateOnSelectYear";
+import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../reducers/FilmSearchReducer";
 
 it("mutates film search state on select year correctly", () => {
     
