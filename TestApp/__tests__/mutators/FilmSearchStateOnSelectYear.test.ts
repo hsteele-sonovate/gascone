@@ -1,7 +1,7 @@
 import { FilmSearchStateOnSelectYear } from "../../src/mutators/FilmSearchStateOnSelectYear";
 import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
 
-it("Select year action mutates film search state correctly", () => {
+it("mutates film search state on select year correctly", () => {
     
     let selectedYear = "10-02-2017";
     let action:IFilmSearchReducerAction = {
@@ -10,9 +10,7 @@ it("Select year action mutates film search state correctly", () => {
         films: []
     };
 
-    expect(
-        FilmSearchStateOnSelectYear(new FilmSearchState(), action)
-    )
+    expect(FilmSearchStateOnSelectYear(new FilmSearchState(), action))
     .toEqual({
         selectedYear: selectedYear,
         searchTerm: "",

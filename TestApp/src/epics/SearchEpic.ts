@@ -8,9 +8,7 @@ import "rxjs/add/operator/mergeMap";
 
 export var SearchEpic: any = (action$: any, store: any): any => {
     return action$
-        .filter((action) => {
-            return action.type === 'SELECT_YEAR' || action.type === 'TYPE_IN_SEARCH_BOX'
-        })
+        .filter((action) => action.type === 'SELECT_YEAR' || action.type === 'TYPE_IN_SEARCH_BOX')
         .debounceTime(250)
         .mergeMap((action) => 
             fetch(`http://www.omdbapi.com/?s=${store.getState().FilmSearchReducer.searchTerm}&y=${store.getState().FilmSearchReducer.selectedYear}`)
@@ -32,7 +30,6 @@ export var SearchEpic: any = (action$: any, store: any): any => {
             });
         })
         .map((results) => {
-            console.log("i did it ma");
             return {
                 type: 'SEARCH_COMPLETED',
                 films: results

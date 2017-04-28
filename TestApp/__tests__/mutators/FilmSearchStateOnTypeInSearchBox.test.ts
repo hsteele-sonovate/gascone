@@ -1,21 +1,19 @@
-import { FilmSearchStateOnSelectYear } from "../../src/mutators/FilmSearchStateOnSelectYear";
+import { FilmSearchStateOnTypeInSearchBox } from "../../src/mutators/FilmSearchStateOnTypeInSearchBox";
 import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
 
-it("mutate shamte", () => {
+it("mutates film search state on type in search box action correctly", () => {
     
-    let selectedYear = "10-02-2017";
+    let searchQuery = "who what there";
     let action:IFilmSearchReducerAction = {
-        type: "SELECT_YEAR",
-        payload: selectedYear,
+        type: "TYPE_IN_SEARCH_BOX",
+        payload: searchQuery,
         films: []
     };
 
-    expect(
-        FilmSearchStateOnSelectYear(new FilmSearchState(), action)
-    )
+    expect(FilmSearchStateOnTypeInSearchBox(new FilmSearchState(), action))
     .toEqual({
-        selectedYear: selectedYear,
-        searchTerm: "",
+        selectedYear: "",
+        searchTerm: searchQuery,
         films: [],
         isLoading: true
     });

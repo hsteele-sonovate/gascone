@@ -1,7 +1,7 @@
 import { FilmSearchStateOnSearchCompleted } from "../../src/mutators/FilmSearchStateOnSearchCompleted";
 import { FilmSearchReducer, FilmSearchState, IFilmSearchReducerAction } from "../../src/reducers/FilmSearchReducer";
 
-it("Search completed action reduces correctly to statels -l", () => {
+it("it mutates film search state on search complete correctly", () => {
     
     let action:IFilmSearchReducerAction = {
         type: "SEARCH_COMPLETED",
@@ -17,9 +17,7 @@ it("Search completed action reduces correctly to statels -l", () => {
         ]
     };
 
-    expect(
-        FilmSearchStateOnSearchCompleted(new FilmSearchState(), action)
-    )
+    expect(FilmSearchStateOnSearchCompleted(new FilmSearchState(), action))
     .toEqual({
         selectedYear: "",
         searchTerm: "",
