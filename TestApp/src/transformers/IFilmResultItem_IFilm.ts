@@ -16,13 +16,13 @@ export interface IFilm {
     imdbID: string
 }
 
-let defaultPosterUrl = "http://www.ckconsumables.com/Content/Images/no_image_placeholder.png";
-let noPosterPresentValue = "N/A";
+export const defaultPosterUrl = "http://www.ckconsumables.com/Content/Images/no_image_placeholder.png";
+export const noPosterPresentValue = "N/A";
 
-export function FilmItem_IFilm(filmItem:IFilmResultItem) {
-    return filmItem.Poster === noPosterPresentValue ? R.assoc('Poster', defaultPosterUrl, filmItem) : filmItem;
+export function IFilmResultItem_IFilm(filmResultItem:IFilmResultItem) {
+    return filmResultItem.Poster === noPosterPresentValue ? R.assoc('Poster', defaultPosterUrl, filmResultItem) : filmResultItem;
 }
 
-export function IFilm_FilmItem(filmItem:IFilmResultItem) {
-    return filmItem.Poster === defaultPosterUrl ? R.assoc('Poster', noPosterPresentValue, filmItem) : filmItem;
+export function IFilm_IFilmResultItem(film:IFilm) {
+    return film.Poster === defaultPosterUrl ? R.assoc('Poster', noPosterPresentValue, film) : film;
 }

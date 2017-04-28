@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/mergeMap";
 
-import { IFilmResultItem, IFilm, FilmItem_IFilm } from "../transformers/IFilmResultItem_IFilm";
+import { IFilmResultItem, IFilm, IFilmResultItem_IFilm } from "../transformers/IFilmResultItem_IFilm";
 import { SearchCompletedAction } from "../actions/SearchCompletedAction";
 
 export var SearchEpic: any = (action$: any, store: any): any => {
@@ -24,6 +24,6 @@ export var SearchEpic: any = (action$: any, store: any): any => {
             return response;
         })
         .map((json) => json.Search)
-        .map((filmItems: IFilmResultItem[]) => filmItems.map(FilmItem_IFilm))
+        .map((filmItems: IFilmResultItem[]) => filmItems.map(IFilmResultItem_IFilm))
         .map((films: IFilm[]) => SearchCompletedAction(films));
 }

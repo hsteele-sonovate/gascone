@@ -21,3 +21,9 @@ containers:
 components: 
 
 # Conventions
+
+AppState: {
+    subState: Reducer
+        actions: Mutators
+
+}
