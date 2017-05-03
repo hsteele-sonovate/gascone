@@ -1,4 +1,4 @@
-import nock from "nock";
+import  * as nock from "nock";
 import { createEpicMiddleware } from "redux-observable";
 import configureMockStore from 'redux-mock-store'
 import { SearchEpic } from "../SearchEpic";
@@ -16,12 +16,13 @@ describe("Search Epic", () => {
     });
 
     afterEach(() => {
-        nock.clanAll();
+        // nock.clanAll();
         epicMiddleware.replaceEpic(SearchEpic);
     });
 
 
     it("something somethigns", () => {
+
         let filmResults: IFilmResultItem[] = [
             {
                 Poster: "aaaa",
@@ -32,9 +33,22 @@ describe("Search Epic", () => {
             }
         ];
 
-        // nock("http://www.omdbapi.com")
-        //     .get(`?s=Godfather&y=10-02-2000`)
-        //     .reply(200, filmResults);
+        nock("http://www.omdbapi.com")
+            .get(`?s=Godfather&y=`)
+            .reply(200, filmResults);
+
+        store.dispatch({
+            type: 'TYPE_IN_SEARCH_BOX',
+            payload: "Godfather"
+        });
+
+        expect(store.getActions())
+            .toEqual([
+                { 
+                    type: "SEARCH_COMPLETED",
+                    films: filmResults
+                }
+            ]);
 
     });
 });
