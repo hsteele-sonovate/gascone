@@ -1,54 +1,48 @@
-import  * as nock from "nock";
-import { createEpicMiddleware } from "redux-observable";
-import configureMockStore from 'redux-mock-store'
+import * as fetchMock from "fetch-mock";
+import { ActionsObservable } from "redux-observable";
 import { SearchEpic } from "../SearchEpic";
+import { SearchCompletedAction } from "../../actions/SearchCompletedAction";
+import { TypeInSearchBoxAction } from "../../actions/TypeInSearchBoxAction";
 import { IFilmResultItem }  from "../../transformers/IFilmResultItem_IFilm";
 
-const epicMiddleware = createEpicMiddleware(SearchEpic);
-const mockStore = configureMockStore([epicMiddleware]);
+let filmResults: IFilmResultItem[] = [
+    {
+        Poster: "aaa",
+        Title: "Some",
+        Type: "Here",
+        Year: "10-10-2017",
+        imdbID: "some"
+    }
+];
+let searchString = "Godfather";
+let typeInSearchBoxAction = ActionsObservable.of(TypeInSearchBoxAction(searchString));
+let searchCompleteAction = SearchCompletedAction(filmResults);
 
 describe("Search Epic", () => {
+    it("returns films and search complete event", (done) => {
 
-    let store;
-
-    beforeEach(() => {
-        store = mockStore();
-    });
-
-    afterEach(() => {
-        // nock.clanAll();
-        epicMiddleware.replaceEpic(SearchEpic);
-    });
-
-
-    it("something somethigns", () => {
-
-        let filmResults: IFilmResultItem[] = [
+        fetchMock
+            .mock(
+                `http://www.omdbapi.com/?s=${searchString}&y=`,
+                { Search: filmResults }
+            );
+        
+        SearchEpic(
+            typeInSearchBoxAction,
             {
-                Poster: "aaaa",
-                Title: "Some",
-                Type: "Here",
-                Year: "10-10-2017",
-                imdbID: "some"
-            }
-        ];
-
-        nock("http://www.omdbapi.com")
-            .get(`?s=Godfather&y=`)
-            .reply(200, filmResults);
-
-        store.dispatch({
-            type: 'TYPE_IN_SEARCH_BOX',
-            payload: "Godfather"
-        });
-
-        expect(store.getActions())
-            .toEqual([
-                { 
-                    type: "SEARCH_COMPLETED",
-                    films: filmResults
+                getState: () => {
+                    return {
+                        FilmSearchReducer: {
+                            searchTerm: searchString,
+                            selectedYear: ""
+                        }
+                    }
                 }
-            ]);
-
+            }
+        )
+        .subscribe((action) => {
+            expect(action).toEqual(searchCompleteAction);
+            done();
+        });
     });
 });
