@@ -5,7 +5,6 @@ import { SelectYearAction } from "../../actions/SelectYearAction";
 import { SearchCompletedAction } from "../../actions/SearchCompletedAction";
 import { TypeInSearchBoxAction } from "../../actions/TypeInSearchBoxAction";
 import { IFilmResultItem } from "../../transformers/IFilmResultItem_IFilm";
-import { FilmSearchState } from "../../reducers/FilmSearchReducer"
 
 let filmResults: IFilmResultItem[] = [
     {
@@ -18,7 +17,6 @@ let filmResults: IFilmResultItem[] = [
 ];
 let searchString = "Godfather";
 let searchYear = "10-10-2017";
-let searchCompleteAction = SearchCompletedAction(filmResults);
 let mockState = {
     getState: () => {
         return {
@@ -45,7 +43,7 @@ describe("Search Epic", () => {
             mockState
         )
         .subscribe((action) => {
-            expect(action).toEqual(searchCompleteAction);
+            expect(action).toEqual(SearchCompletedAction(filmResults));
             done();
         });
     });
@@ -63,7 +61,7 @@ describe("Search Epic", () => {
             mockState
         )
         .subscribe((action) => {
-            expect(action).toEqual(searchCompleteAction);
+            expect(action).toEqual(SearchCompletedAction(filmResults));
             done();
         });
     });
