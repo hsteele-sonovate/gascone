@@ -27,7 +27,6 @@ export const FilmSearchReducer = (
         case 'SELECT_YEAR': 
             return FilmSearchStateOnSelectYear(state, action);
         case 'TYPE_IN_SEARCH_BOX':
-            console.log("I know yer alive");
             return FilmSearchStateOnTypeInSearchBox(state, action);
         case 'SEARCH_COMPLETED':
             return FilmSearchStateOnSearchCompleted(state, action);
